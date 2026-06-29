@@ -1,0 +1,75 @@
+/* === PALETA NOGUCHI DESIGN === */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e202c; 
+    color: #ffffff; 
+    margin: 0;
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#gacha-snow-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+}
+
+.container {
+    background-color: rgba(49, 50, 62, 0.95); 
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(96, 81, 155, 0.3); 
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #60519b; 
+    z-index: 10; 
+    max-height: 90vh; 
+    overflow-y: auto; 
+}
+
+.container::-webkit-scrollbar { width: 6px; }
+.container::-webkit-scrollbar-thumb { background-color: #60519b; border-radius: 10px; }
+
+h1 { text-align: center; color: #60519b; margin-bottom: 5px; font-size: 1.5rem; }
+p.subtitle { text-align: center; color: #bfc0d1; font-size: 0.9rem; margin-bottom: 25px; }
+h2 { font-size: 1.2rem; border-bottom: 2px solid #60519b; padding-bottom: 5px; margin-top: 20px; color: #bfc0d1; }
+
+.task-list { list-style: none; padding: 0; }
+.task-list li { 
+    margin: 15px 0; display: flex; align-items: center; 
+    background: #1e202c; padding: 10px 15px; border-radius: 8px; 
+    transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent;
+}
+.task-list li:hover { transform: translateX(5px); box-shadow: -4px 0px 0px #60519b; }
+
+input[type="checkbox"] { 
+    appearance: none; width: 20px; height: 20px; border: 2px solid #60519b; 
+    border-radius: 4px; margin-right: 15px; cursor: pointer; position: relative; 
+    transition: all 0.3s; background-color: #1e202c;
+}
+
+input[type="checkbox"]:checked { background-color: #60519b; }
+input[type="checkbox"]:checked::after { 
+    content: '✔'; color: white; position: absolute; top: -2px; left: 3px; font-size: 14px; 
+}
+
+label { cursor: pointer; font-weight: 600; user-select: none; transition: color 0.3s; width: 100%; }
+input[type="checkbox"]:checked + label { text-decoration: line-through; color: #bfc0d1; opacity: 0.6; }
+
+.meme-container { margin-top: 30px; text-align: center; }
+.meme-title { font-size: 1rem; border-bottom: none; color: #bfc0d1; margin-bottom: 15px; font-style: italic; }
+
+#daily-meme {
+    max-width: 100%; 
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #1e202c;
+    box-shadow: 0 4px 15px rgba(0,0,0, 0.4);
+    display: none; 
+}
