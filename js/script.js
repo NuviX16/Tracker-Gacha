@@ -59,9 +59,44 @@ document.addEventListener("DOMContentLoaded", () => {
     loadProgress(weeklies);
     checkResetsAndMeme(dailies, weeklies);
     
-    dailies.forEach(cb => cb.addEventListener('change', () => localStorage.setItem(cb.id, cb.checked)));
-    weeklies.forEach(cb => cb.addEventListener('change', () => localStorage.setItem(cb.id, cb.checked)));
+    dailies.forEach(cb => cb.addEventListener('change', () => { localStorage.setItem(cb.id, cb.checked); updateProgress(dailies, weeklies); }));
+    weeklies.forEach(cb => cb.addEventListener('change', () => { localStorage.setItem(cb.id, cb.checked); updateProgress(dailies, weeklies); }));
+
+    updateProgress(dailies, weeklies);
+    updateTimers();
+    setInterval(() => {
+        // si pasa la medianoche con la página abierta, reinicia sin recargar
+        checkResetsAndMeme(dailies, weeklies);
+        updateProgress(dailies, weeklies);
+        updateTimers();
+    }, 30000);
 });
+
+// === PROGRESO Y CUENTA REGRESIVA ===
+function updateProgress(dailies, weeklies) {
+    const pintar = (list, countId, barId) => {
+        const hechas = [...list].filter(cb => cb.checked).length;
+        document.getElementById(countId).textContent = `${hechas}/${list.length}`;
+        document.getElementById(barId).style.width = list.length ? `${(hechas / list.length) * 100}%` : '0%';
+        return hechas === list.length;
+    };
+    const d = pintar(dailies, 'daily-count', 'daily-bar');
+    pintar(weeklies, 'weekly-count', 'weekly-bar');
+    document.getElementById('all-done').classList.toggle('show', d);
+}
+
+function updateTimers() {
+    const now = new Date();
+    const fmt = ms => {
+        const m = Math.floor(ms / 60000), d = Math.floor(m / 1440), h = Math.floor((m % 1440) / 60), mm = m % 60;
+        return d ? `${d}d ${h}h` : h ? `${h}h ${mm}m` : `${mm}m`;
+    };
+    const midnight = new Date(now); midnight.setHours(24, 0, 0, 0);
+    const tuesday = new Date(now); tuesday.setHours(0, 0, 0, 0);
+    tuesday.setDate(tuesday.getDate() + (((2 - tuesday.getDay()) + 7) % 7 || 7));
+    document.getElementById('daily-timer').textContent = fmt(midnight - now);
+    document.getElementById('weekly-timer').textContent = fmt(tuesday - now);
+}
 
 function loadProgress(checkboxes) {
     checkboxes.forEach(cb => { if (localStorage.getItem(cb.id) === 'true') cb.checked = true; });
