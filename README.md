@@ -31,7 +31,7 @@ Hecho a la medida, con memes incluidos. 🫦🔥
 
 ```
 index.html        estructura y lista de juegos
-css/style.css     diseño (paleta Noguchi, vidrio, progreso)
+css/style.css     diseño (póster: amarillo, negro y rosa, recortes girados)
 js/script.js      guardado, reinicios diario/semanal, meme y nieve
 memes/            memes del día
 img/              favicon y la imagen que cae

@@ -1,182 +1,34 @@
-/* === PALETA NOGUCHI DESIGN (rediseño: vidrio + progreso) === */
-:root {
-    --bg: #1e202c;
-    --card: rgba(49, 50, 62, 0.78);
-    --accent: #60519b;
-    --accent-2: #8f7fd6;
-    --text: #ffffff;
-    --muted: #bfc0d1;
-    --radius: 18px;
-}
-
+/* Variante: póster / collage — amarillo, negro y rosa, letras gruesas y recortes girados */
+:root { --amarillo: #ffe14d; --negro: #111; --rosa: #ff3d8b; --blanco: #fffdf5; }
 * { box-sizing: border-box; }
-
-body {
-    font-family: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background:
-        radial-gradient(circle at 15% 20%, rgba(96, 81, 155, 0.35), transparent 45%),
-        radial-gradient(circle at 85% 80%, rgba(143, 127, 214, 0.25), transparent 50%),
-        var(--bg);
-    color: var(--text);
-    margin: 0;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding: 16px;
-}
-
-#gacha-snow-canvas {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.container {
-    background: var(--card);
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    padding: 30px 28px;
-    border-radius: var(--radius);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(143, 127, 214, 0.35), 0 8px 32px rgba(96, 81, 155, 0.35);
-    width: 100%;
-    max-width: 430px;
-    z-index: 10;
-    max-height: calc(100dvh - 32px);
-    overflow-y: auto;
-    animation: entrar 0.6s cubic-bezier(.2, .8, .2, 1);
-}
-
-@keyframes entrar { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
-
-.container::-webkit-scrollbar { width: 6px; }
-.container::-webkit-scrollbar-thumb { background-color: var(--accent); border-radius: 10px; }
-
-h1 {
-    text-align: center;
-    margin: 0 0 4px;
-    font-size: 1.9rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    background: linear-gradient(90deg, var(--accent-2), #d6cdfa, var(--accent-2));
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: brillo 6s linear infinite;
-}
-
-@keyframes brillo { to { background-position: 200% center; } }
-
-p.subtitle { text-align: center; color: var(--muted); font-size: 0.95rem; margin: 0 0 22px; font-style: italic; opacity: .85; }
-
-.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 22px; }
-
-h2 { font-size: 1.1rem; font-weight: 600; margin: 0; color: var(--muted); }
-
-.counter {
-    font-size: .8rem;
-    font-weight: 600;
-    color: var(--text);
-    background: rgba(96, 81, 155, 0.45);
-    padding: 3px 10px;
-    border-radius: 999px;
-    white-space: nowrap;
-}
-
-.progress { height: 6px; background: rgba(30, 32, 44, 0.9); border-radius: 999px; overflow: hidden; margin-top: 10px; }
-.progress-bar {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
-    border-radius: 999px;
-    transition: width .5s cubic-bezier(.2, .8, .2, 1);
-    box-shadow: 0 0 12px rgba(143, 127, 214, .7);
-}
-
-.reset-in { margin: 6px 0 0; font-size: .75rem; color: var(--muted); opacity: .7; text-align: right; }
-
-.task-list { list-style: none; padding: 0; margin: 10px 0 0; }
-.task-list li {
-    margin: 9px 0;
-    display: flex;
-    align-items: center;
-    background: rgba(30, 32, 44, 0.85);
-    padding: 12px 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(96, 81, 155, 0.25);
-    transition: transform .2s, box-shadow .2s, border-color .2s, background .2s;
-}
-.task-list li:hover { transform: translateX(5px); box-shadow: -4px 0 0 var(--accent); border-color: rgba(143, 127, 214, .6); }
-.task-list li:has(input:checked) { background: rgba(96, 81, 155, 0.18); }
-
-input[type="checkbox"] {
-    appearance: none;
-    flex: none;
-    width: 22px;
-    height: 22px;
-    border: 2px solid var(--accent-2);
-    border-radius: 7px;
-    margin: 0 14px 0 0;
-    cursor: pointer;
-    position: relative;
-    transition: all .25s;
-    background-color: var(--bg);
-}
-input[type="checkbox"]:checked {
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    border-color: transparent;
-    animation: pop .3s ease;
-}
-input[type="checkbox"]:checked::after {
-    content: '✔';
-    color: white;
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-size: 13px;
-}
-input[type="checkbox"]:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; }
-
-@keyframes pop { 50% { transform: scale(1.25); } }
-
-label { cursor: pointer; font-weight: 600; user-select: none; transition: color .3s, opacity .3s; width: 100%; }
-input[type="checkbox"]:checked + label { text-decoration: line-through; color: var(--muted); opacity: 0.6; }
-
-.all-done {
-    text-align: center;
-    margin: 18px 0 0;
-    padding: 10px;
-    border-radius: 12px;
-    background: linear-gradient(90deg, rgba(96, 81, 155, .35), rgba(143, 127, 214, .35));
-    font-weight: 600;
-    display: none;
-    animation: entrar .5s ease;
-}
+body { margin: 0; min-height: 100dvh; color: var(--negro); font-family: 'Space Mono', monospace;
+  background: radial-gradient(#0002 1.2px, transparent 1.3px) 0 0 / 10px 10px, var(--amarillo); padding: 0 14px 50px; overflow-x: hidden; }
+#gacha-snow-canvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: .5; z-index: 0; }
+.poster { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; }
+.cinta { margin: 0 -40px 20px; padding: 6px 0; background: var(--negro); color: var(--amarillo); font: 700 .8rem 'Space Mono', monospace; white-space: nowrap; overflow: hidden; transform: rotate(-2deg); letter-spacing: .1em; }
+h1 { margin: 10px 0 0; font: 400 clamp(4rem, 19vw, 7.5rem)/.85 'Anton', sans-serif; text-transform: uppercase; letter-spacing: -.01em; }
+h1 span { color: var(--blanco); background: var(--rosa); padding: 0 .12em; display: inline-block; transform: rotate(-3deg); box-shadow: 6px 6px 0 var(--negro); }
+.subtitle { margin: 14px 0 26px; font-family: 'Permanent Marker', cursive; font-size: 1.2rem; transform: rotate(1deg); }
+section { position: relative; margin-bottom: 26px; padding: 16px 16px 12px; background: var(--blanco); border: 3px solid var(--negro); box-shadow: 8px 8px 0 var(--negro); }
+.diarias { transform: rotate(-.8deg); } .martes { transform: rotate(1deg); }
+h2 { margin: 0 0 8px; font: 400 2.2rem/1 'Anton', sans-serif; text-transform: uppercase; }
+h2 small { display: block; font: 700 .72rem 'Space Mono', monospace; text-transform: none; margin-top: 4px; }
+.marcador { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.marcador span { font: 400 1.6rem 'Anton', sans-serif; background: var(--negro); color: var(--amarillo); padding: 0 8px; transform: rotate(-3deg); }
+.progress { flex: 1; height: 14px; border: 3px solid var(--negro); background: var(--blanco); }
+.progress-bar { height: 100%; width: 0; background: repeating-linear-gradient(-45deg, var(--rosa) 0 6px, var(--negro) 6px 12px); transition: width .4s; }
+.task-list { list-style: none; margin: 0; padding: 0; }
+.task-list input { position: absolute; opacity: 0; }
+.task-list label { position: relative; display: inline-block; padding: 2px 6px; margin: 2px 0; font: 400 clamp(1.8rem, 8vw, 2.6rem)/1.1 'Anton', sans-serif; text-transform: uppercase; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent; }
+.task-list li:nth-child(even) label { transform: rotate(1.2deg); } .task-list li:nth-child(odd) label { transform: rotate(-1deg); }
+.task-list label:hover { background: var(--amarillo); }
+.task-list input:checked + label { color: #0006; }
+.task-list input:checked + label::after { content: ""; position: absolute; inset: -6px -10px; border: 4px solid var(--rosa); border-radius: 50%; transform: rotate(-4deg); }
+.task-list input:checked + label::before { content: "✓"; position: absolute; right: -34px; top: -4px; font: 400 2.2rem 'Permanent Marker', cursive; color: var(--rosa); }
+.task-list input:focus-visible + label { outline: 3px dashed var(--negro); }
+.all-done { display: none; margin: 0 0 26px; padding: 10px 14px; background: var(--rosa); color: var(--blanco); font: 400 2rem 'Anton', sans-serif; text-transform: uppercase; transform: rotate(-2deg); box-shadow: 6px 6px 0 var(--negro); }
 .all-done.show { display: block; }
-
-.meme-container { margin-top: 26px; text-align: center; }
-.meme-title { font-size: 1rem; color: var(--muted); margin-bottom: 12px; font-style: italic; font-weight: 400; }
-
-#daily-meme {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    border: 1px solid rgba(143, 127, 214, .4);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    display: none;
-}
-
-@media (max-width: 480px) {
-    .container { padding: 24px 18px; }
-    h1 { font-size: 1.6rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition: none !important; }
-}
+.recorte { transform: rotate(-1.5deg); padding: 12px; }
+.sello { position: absolute; top: -18px; right: 14px; margin: 0; padding: 4px 10px; background: var(--rosa); color: var(--blanco); font: 400 1.1rem 'Permanent Marker', cursive; transform: rotate(6deg); border: 3px solid var(--negro); }
+.meme-container img { display: none; width: 100%; max-height: 55vh; object-fit: cover; border: 3px solid var(--negro); filter: contrast(1.05) saturate(1.1); }
+.pie { margin: 8px 0 0; font-family: 'Permanent Marker', cursive; }

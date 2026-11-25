@@ -1,58 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tracker de Esclavitud Gacha</title>
-    <meta name="theme-color" content="#1e202c">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    
-    <link rel="icon" href="img/Ojosinfondo.png" type="image/png">
-    
-    <script src="js/script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tracker de Esclavitud Gacha</title>
+<meta name="theme-color" content="#ffe14d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="icon" href="img/Ojosinfondo.png" type="image/png">
+<script src="js/script.js?v=4" defer></script>
 </head>
 <body>
-    <canvas id="gacha-snow-canvas"></canvas>
+<canvas id="gacha-snow-canvas"></canvas>
+<main class="poster">
+  <header>
+    <p class="cinta">⚠ esclavitud gacha ⚠ esclavitud gacha ⚠ esclavitud gacha ⚠</p>
+    <h1>Solo un<br><span>login</span> más</h1>
+    <p class="subtitle">"Solo un login más..."</p>
+  </header>
 
-    <div class="container">
-        <h1>Tracker de Esclavitud</h1>
-        <p class="subtitle">"Solo un login más..."</p>
+  <section class="diarias">
+    <h2>Diarias!! <small>reinicio en <span id="daily-timer">--</span></small></h2>
+    <div class="marcador"><span id="daily-count">0/0</span><div class="progress"><div class="progress-bar" id="daily-bar"></div></div></div>
+    <ul class="task-list">
+      <li><input type="checkbox" id="genshit" class="daily-task"><label for="genshit">Genshit</label></li>
+      <li><input type="checkbox" id="suenering" class="daily-task"><label for="suenering">Sueñering</label></li>
+      <li><input type="checkbox" id="porndust" class="daily-task"><label for="porndust">Porn Dust</label></li>
+      <li><input type="checkbox" id="honkai" class="daily-task"><label for="honkai">Honkai</label></li>
+      <li><input type="checkbox" id="zzz" class="daily-task"><label for="zzz">ZZZ</label></li>
+      <li><input type="checkbox" id="umagodsume" class="daily-task"><label for="umagodsume">UmaGodsume</label></li>
+      <li><input type="checkbox" id="nikke" class="daily-task"><label for="nikke">MariaN</label></li>
+    </ul>
+  </section>
 
-        <div class="section-head">
-            <h2>Diarias (Reset a medianoche)</h2>
-            <span class="counter" id="daily-count">0/0</span>
-        </div>
-        <div class="progress"><div class="progress-bar" id="daily-bar"></div></div>
-        <p class="reset-in">reinicio en <span id="daily-timer">--</span></p>
-        <ul class="task-list" id="dailies-list">
-            <li><input type="checkbox" id="genshit" class="daily-task"><label for="genshit">Genshit</label></li>
-            <li><input type="checkbox" id="suenering" class="daily-task"><label for="suenering">Sueñering</label></li>
-            <li><input type="checkbox" id="porndust" class="daily-task"><label for="porndust">Porn Dust</label></li>
-            <li><input type="checkbox" id="honkai" class="daily-task"><label for="honkai">Honkai</label></li>
-            <li><input type="checkbox" id="zzz" class="daily-task"><label for="zzz">ZZZ</label></li>
-            <li><input type="checkbox" id="umagodsume" class="daily-task"><label for="umagodsume">UmaGodsume</label></li>
-            <li><input type="checkbox" id="nikke" class="daily-task"><label for="nikke">MariaN</label></li>
-        </ul>
+  <p class="all-done" id="all-done">¡Todo listo! A tocar pasto</p>
 
-        <div class="section-head">
-            <h2>Los Martes 🫦🔥</h2>
-            <span class="counter" id="weekly-count">0/0</span>
-        </div>
-        <div class="progress"><div class="progress-bar" id="weekly-bar"></div></div>
-        <p class="reset-in">reinicio en <span id="weekly-timer">--</span></p>
-        <ul class="task-list" id="weeklies-list">
-            <li><input type="checkbox" id="cs2" class="weekly-task"><label for="cs2">Counter Strike 2</label></li>
-        </ul>
+  <section class="martes">
+    <h2>Los martes 🫦🔥 <small>reinicio en <span id="weekly-timer">--</span></small></h2>
+    <div class="marcador"><span id="weekly-count">0/0</span><div class="progress"><div class="progress-bar" id="weekly-bar"></div></div></div>
+    <ul class="task-list"><li><input type="checkbox" id="cs2" class="weekly-task"><label for="cs2">Counter Strike 2</label></li></ul>
+  </section>
 
-        <p class="all-done" id="all-done">✨ Todo listo por hoy, ya puedes tocar pasto ✨</p>
-
-        <div class="meme-container">
-            <h2 class="meme-title">Motivación (o desilusión) del día</h2>
-            <img id="daily-meme" src="" alt="Meme del día">
-        </div>
-    </div>
+  <section class="recorte">
+    <p class="sello">meme del día</p>
+    <div class="meme-container"><img id="daily-meme" src="" alt="Meme del día"></div>
+    <p class="pie">motivación (o desilusión)</p>
+  </section>
+</main>
 </body>
 </html>

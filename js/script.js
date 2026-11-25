@@ -60,8 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
     loadProgress(weeklies);
     checkResetsAndMeme(dailies, weeklies);
     
-    dailies.forEach(cb => cb.addEventListener('change', () => { localStorage.setItem(cb.id, cb.checked); updateProgress(dailies, weeklies); }));
-    weeklies.forEach(cb => cb.addEventListener('change', () => { localStorage.setItem(cb.id, cb.checked); updateProgress(dailies, weeklies); }));
+    const reclamar = cb => {
+        localStorage.setItem(cb.id, cb.checked);
+        updateProgress(dailies, weeklies);
+        if (cb.checked) { const li = cb.closest('li'); li.classList.remove('recien'); void li.offsetWidth; li.classList.add('recien'); }
+    };
+    dailies.forEach(cb => cb.addEventListener('change', () => reclamar(cb)));
+    weeklies.forEach(cb => cb.addEventListener('change', () => reclamar(cb)));
 
     updateProgress(dailies, weeklies);
     updateTimers();
@@ -83,6 +88,11 @@ function updateProgress(dailies, weeklies) {
     };
     const d = pintar(dailies, 'daily-count', 'daily-bar');
     pintar(weeklies, 'weekly-count', 'weekly-bar');
+    // gemas (60 por diaria) y cofres de actividad a los 3, 5 y 7
+    const hechas = [...dailies].filter(cb => cb.checked).length;
+    const gemas = document.getElementById('gemas');
+    if (gemas) gemas.textContent = hechas * 60;
+    document.querySelectorAll('.cofre').forEach(c => c.classList.toggle('abierto', hechas >= +c.dataset.meta));
     document.getElementById('all-done').classList.toggle('show', d);
 }
 
