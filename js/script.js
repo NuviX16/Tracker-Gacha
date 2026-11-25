@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dailies = document.querySelectorAll('.daily-task');
     const weeklies = document.querySelectorAll('.weekly-task');
     
+    localStorage.removeItem("7ds"); // 7DS ya no está en la lista
     loadProgress(dailies);
     loadProgress(weeklies);
     checkResetsAndMeme(dailies, weeklies);

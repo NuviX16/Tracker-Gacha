@@ -20,7 +20,7 @@ Hecho a la medida, con memes incluidos. 🫦🔥
 
 | | |
 |---|---|
-| ✅ **Diarias** | Genshit, Sueñering, Porn Dust, Honkai, ZZZ, UmaGodsume, 7DS — se desmarcan solas a medianoche |
+| ✅ **Diarias** | Genshit, Sueñering, Porn Dust, Honkai, ZZZ, UmaGodsume, MariaN (Nikke) — se desmarcan solas a medianoche |
 | 📅 **Semanal** | Counter Strike 2 — se reinicia cada martes |
 | 📊 **Progreso** | Barra y contador por sección, y cuenta regresiva al siguiente reinicio |
 | 🖼️ **Meme del día** | Uno al azar cada día (motivación… o desilusión) |
